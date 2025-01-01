@@ -1,0 +1,6 @@
+Get-CimInstance Win32_OperatingSystem | ForEach-Object {
+$totalMB = [math]::Round($_.TotalVisibleMemorySize / 1KB, 2)
+$freeMB = [math]::Round($_.FreePhysicalMemory / 1KB, 2)
+$usedMB = $totalMB - $freeMB
+"Total: {0:N2} MB`nUsed: {1:N2} MB`nFree: {2:N2} MB" -f $totalMB, $usedMB, $freeMB
+}
